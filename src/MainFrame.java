@@ -24,7 +24,7 @@ public class MainFrame extends JFrame{
 
         setContentPane(JPmain);
         setTitle("Wordel");
-        setSize(400, 400);
+        setSize(700, 500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
