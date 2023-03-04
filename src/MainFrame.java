@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -11,7 +13,6 @@ public class MainFrame extends JFrame{
     private JTextField JtextW5;
     private JTextField JtextW3;
     private JTextField JtextW4;
-
     private ArrayList<JTextField> JtextW = new ArrayList<JTextField>();
 
 
@@ -35,7 +36,35 @@ public class MainFrame extends JFrame{
                 System.out.println("Hello " + word);
             }
         });
+
+
+        JtextW1.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                String newValue = JtextW1.getText();
+                if (newValue.length() > 1) {
+                    System.out.println(newValue);
+                    System.out.println("Too many characters");
+                    SwingUtilities.invokeLater(new Runnable() {
+                        public void run() {
+                            JtextW1.setText("új tartalom");
+                        }
+                    });
+                }
+                JtextW2.requestFocus();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {}
+        });
     }
+
+
     public String getWord(){
         String temp = "";
         for (JTextField jTextW : JtextW) {
