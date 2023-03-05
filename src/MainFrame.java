@@ -41,26 +41,16 @@ public class MainFrame extends JFrame{
         JtextW1.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                String newValue = JtextW1.getText();
-                if (newValue.length() > 1) {
-                    System.out.println(newValue);
-                    System.out.println("Too many characters");
-                    SwingUtilities.invokeLater(new Runnable() {
-                        public void run() {
-                            JtextW1.setText("új tartalom");
-                        }
-                    });
-                }
                 JtextW2.requestFocus();
             }
 
             @Override
-            public void removeUpdate(DocumentEvent e) {
-
-            }
+            public void removeUpdate(DocumentEvent e) {}
 
             @Override
-            public void changedUpdate(DocumentEvent e) {}
+            public void changedUpdate(DocumentEvent e) {
+                JtextW2.requestFocus();
+            }
         });
     }
 
