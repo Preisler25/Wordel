@@ -13,6 +13,7 @@ public class MainFrame extends JFrame{
     private JTextField JtextW5;
     private JTextField JtextW3;
     private JTextField JtextW4;
+    private JPanel History;
     private ArrayList<JTextField> JtextW = new ArrayList<JTextField>();
 
 
@@ -37,7 +38,7 @@ public class MainFrame extends JFrame{
             }
         });
 
-
+        //This shit makes you jump from one to another one
         JtextW1.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -50,6 +51,74 @@ public class MainFrame extends JFrame{
             @Override
             public void changedUpdate(DocumentEvent e) {
                 JtextW2.requestFocus();
+            }
+        });
+
+        JtextW2.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                JtextW3.requestFocus();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                JtextW1.requestFocus();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                JtextW3.requestFocus();
+            }
+        });
+
+        JtextW3.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                JtextW4.requestFocus();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                JtextW2.requestFocus();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                JtextW4.requestFocus();
+            }
+        });
+
+        JtextW4.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                JtextW5.requestFocus();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                JtextW3.requestFocus();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                JtextW5.requestFocus();
+            }
+        });
+
+        JtextW5.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                JtextW1.requestFocus();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                JtextW4.requestFocus();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                JtextW1.requestFocus();
             }
         });
     }
