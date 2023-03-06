@@ -19,7 +19,7 @@ public class MainFrame extends JFrame{
     private JTextField JtextW3;
     private JTextField JtextW4;
     private JPanel History;
-    private String word_of_the_day;
+    private String word_of_the_day = "aaaaa";
     private ArrayList<JTextField> JtextW = new ArrayList<JTextField>();
 
     public class JTextFieldLimit extends PlainDocument {
@@ -163,6 +163,9 @@ public class MainFrame extends JFrame{
         public void actionPerformed(ActionEvent e) {
             if (checkEmpty()) {return;}
             String word = getWord();
+            if (checkWord(word)) {
+                System.out.println("You got it!");
+            }
             System.out.println("Hello " + word);
         }
     });
