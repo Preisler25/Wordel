@@ -78,8 +78,6 @@ public class MainFrame extends JFrame{
             }
         });
 
-
-
         //This shit makes you jump from one to another one
         JtextW1.getDocument().addDocumentListener(new DocumentListener() {
             @Override
@@ -159,8 +157,27 @@ public class MainFrame extends JFrame{
             @Override
             public void changedUpdate(DocumentEvent e) {}
         });
+    JtextW5.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (checkEmpty()) {return;}
+            String word = getWord();
+            System.out.println("Hello " + word);
+        }
+    });
     }
 
+
+
+    //This method checks if the textfields are empty
+    public boolean checkEmpty(){
+        for (JTextField jTextW : JtextW) {
+            if (jTextW.getText().equals("")) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     //This method gets the word from the textfields
     public String getWord(){
