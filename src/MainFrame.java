@@ -19,6 +19,7 @@ public class MainFrame extends JFrame{
     private JTextField JtextW3;
     private JTextField JtextW4;
     private JPanel History;
+    private String word_of_the_day;
     private ArrayList<JTextField> JtextW = new ArrayList<JTextField>();
 
     public class JTextFieldLimit extends PlainDocument {
@@ -168,6 +169,25 @@ public class MainFrame extends JFrame{
     }
 
 
+    public boolean checkWord(String word){
+        if (word.equals(word_of_the_day)){
+            return true;
+        }
+        else{
+            checkSimilarity(word);
+            return false;
+        }
+    }
+
+    public void checkSimilarity(String word){
+        ArrayList<Character> word_of_the_day_list = new ArrayList<Character>();
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) == word_of_the_day.charAt(i)){
+                word_of_the_day_list.add(word.charAt(i));
+            }
+        }
+        System.out.println("Similarity: " + word_of_the_day_list.size() + " out of " + word.length() + "letters" + word_of_the_day_list);
+    }
 
     //This method checks if the textfields are empty
     public boolean checkEmpty(){
